@@ -1,0 +1,166 @@
+# New variables and their explanation.
+# %USERNAME% -> Name of the user who executes the following action; It can be by command, login to the server or others.
+# %SERVER% -> Variable that delivers or the name of the server that caused the failure to connect, or super (Global) variable of terms of internal execution of the plugin,
+#             which can end in (PREMIUM & CRACKED), which refers to the configuration file config.yml [ Plugin.Servers.* ].
+# %SEARCHED-NAME% -> If the player's name is not found in the PlayerData, it will return error as a result
+# %SECOND% -> It will deliver the remaining time when a Countdown is executed in the corresponding path.
+# %LOGIN-STATUS% -> It will deliver by parameter (PREMIUM or CRACKED) according to its merited action.
+# %COMMAND% -> Deliver the first value obtained from the configuration file (config.yml) set as the plugin command, path: [ Commands.MainCommand.command ]
+# %PREMIUM-ARGUMENT% -> It obtains the first value set in the configuration file (config.yml) of the plugin in the section of (# /FastLogin 'premium' @@@@@ @@@@@), path: [ Commands.MainCommand.command.arguments.premium.executor ]
+# %RELOAD-ARGUMENT% -> It obtains the first value set in the configuration file (config.yml) of the plugin in the section of (# /FastLogin 'reload'), path: [ Commands.MainCommand.command.arguments.reload.executor ]
+# %FLOGIN-COMMAND% -> Deliver the first value obtained from the configuration file (config.yml) set as the plugin command, path: [ Commands.PremiumToggleMode.command ]
+# Now, all messages except those sent to the console support JSON!
+
+Normal:
+  console:
+    noConsoleExecutor:
+      - ' '
+      - '&d&lFastLogin &3· &4&lThe command can only be executed by a Player'
+      - ' '
+    premiumPlayerInput:
+      - ' '
+      - '&d&lFastLogin &3· &7[&a&lPREMIUM&7] &6- &3%USERNAME%'
+      - ' '
+    crackedPlayerInput:
+      - ' '
+      - '&d&lFastLogin &3· &7[&4&lCRACKED&7] &6- &3%USERNAME%'
+      - ' '
+    unansweredServer:
+      - ''
+      - '&d&lFastLogin &3· &cThe server &f%SERVER% &4does not respond, please check the configuration or your server.'
+      - ''
+  inGame:
+    notHavePermissions:
+      - ' '
+      - '&d&lFastLogin &3· &cYou do not have sufficient permissions to execute this command.'
+      - ' '
+    isNotAvailableOnThisServer:
+      - ' '
+      - '&d&lFastLogin &3· &4The command is not available on this server.'
+      - ' '
+    commandCountdown:
+      - ' '
+      - '&d&lFastLogin &3· &cYou have to wait %SECOND% seconds, to return to using the command.'
+      - ' '
+    newNonPremiumEntry:
+      - '&eWelcome &3%USERNAME% &7·'
+      - '  &9&lYour income indicates that you are &a&lPREMIUM &9&land your progress may not be saved.'
+      - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cand your progress is saved according to the server &coptions."}]'
+    logInCrackedOrPremium:
+      premium:
+        - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+        - '&f%USERNAME% &7· &e&lYou have logged in as a &a&lPREMIUM &e&luser'
+        - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cTo enter between premium or cracked mode."}]'
+      cracked:
+        - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+        - '&f%USERNAME% &7· &e&lYou have logged in as a &c&lCRACKED &e&luser'
+        - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cTo enter between premium or cracked mode."}]'
+  outGame:
+    waitingForTheHandshake:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - '&4This is not an error&7; &e&la recent start of Proxy was detected'
+      - '&b&lPlease wait or contact an &4administrator&7&l...'
+    fallenMojangServers:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - '&cMaybe it''s a mistake, but we could not ask about you at &eMinecraft.net'
+      - '&4Will mojang fall? &f| &eIf you think it''s a mistake&7, &crestart the game'
+    kickedToLoadYourNewLogin:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - ' '
+      - '&9&lYou can now log in as a user %LOGIN-STATUS%'
+    waitingForTheServersOK:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - ' '
+      - '&eSome of the servers are having &4problems &etrying to connect.'
+      - '&b&lServer&7/&b&ls&7: &f%SERVER%'
+      - '&c&lContact the administrator.'
+    invalidAccount:
+      - ' '
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - '&4&lSorry, we did not detect that your account is registered with Minecraft.net'
+      - ' '
+
+Commands:
+  MainCommand:
+    usage:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lLoad the new configuration and the language file without restarting the proxy."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
+      - '&3&m―――――――――――――――――――――――――――――――――――――&r'
+    status:
+      usage:
+        - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+        - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
+        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+        - '&3&m―――――――――――――――――――――――――――――――――――――&r'
+      enable:
+        - ''
+        - '&d&lFastLogin &3· &eThe player &7%USERNAME% &ehas &a&lACTIVATED &ethe premium login.'
+        - ''
+      disable:
+        - ''
+        - '&d&lFastLogin &3· &eThe &7%USERNAME% &eplayer has the premium login &4&lDISABLED.'
+        - ''
+    accountIsInvalid:
+      - ''
+      - '&d&lFastLogin &3· &cThe player search %SEARCHED-NAME% returned a null value, try again or later.'
+      - ''
+    wrongSearch:
+      - ''
+      - '&d&lFastLogin &3· &cThe player %SEARCHED-NAME% that you are trying to change the fast login, has never connected.'
+      - ''
+    premiumLoginIsRequired:
+      - ' '
+      - '&d&lFastLogin &cThe command is disabled as FastLogin is not optional.'
+      - ' '
+    toggle:
+      usage:
+        - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+        - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
+        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+        - '&3&m―――――――――――――――――――――――――――――――――――――&r'
+      enable:
+        - ''
+        - '&d&lFastLogin &3· &eFast logging for player %USERNAME% has been &a&lACTIVATED'
+        - ''
+      disable:
+        - ''
+        - '&d&lFastLogin &3· &eFast logging for player %USERNAME% has been &4&lDISABLED'
+        - ''
+    reload:
+      usage:
+        - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+        - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
+        - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lLoad the new configuration and the language file without restarting the proxy."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
+        - '&3&m―――――――――――――――――――――――――――――――――――――&r'
+      start:
+        - ''
+        - '&d&lFastLogin &3· &e&lIt is loading its new configuration and language.'
+        - '&4 Attention! If you are reloading the configuration to change the semi premium mode'
+        - '&4I advise you to better restart the proxy, doing this hot can cause data problems.'
+        - ''
+      end:
+        - ''
+        - '&d&lFastLogin &3· &a&lYour configuration and language file were loaded correctly.'
+        - ''
+  TogglePremiumMode:
+    usage:
+      - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
+      - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+      - '&3&m―――――――――――――――――――――――――――――――――――――&r'
+    enable:
+      - ''
+      - '&d&lFastLogin &3· &eThe &a&lPREMIUM &elogin has been &a&lACTIVATED'
+      - ''
+    disable:
+      - ''
+      - '&d&lFastLogin &3· &eThe &a&lPREMIUM &elogin has been &4&lDEACTIVATED.'
+      - ''
+
+Others:
+  - '%LOGIN-STATUS%:TRUE:&a&ACTIVATED'
+  - '%LOGIN-STATUS%:FALSE:&4&lDEACTIVATED'
