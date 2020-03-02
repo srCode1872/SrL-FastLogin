@@ -1,0 +1,81 @@
+# File generation and saving section.
+SaveData:
+  # Here you can modify some options of saving the plugin's logs.
+  Logs:
+    # If you want the plugin save independently | Errors, Warnings and INFO |
+    # of the plugin in a separate file, leave it enabled.
+    enable: true
+    # When activated, each proxy start causes the old logs to be deleted.
+    # Attention: If this option and the option (compressOldLogs) are activated, this option has priority
+    removeOldLogsStartup: false
+    # Compress the files and save space.
+    compressOldLogs: true
+
+# Here you can modify some of the plugin commands.
+# Change of argument, permissions, countdown and blacklist of servers.
+Commands:
+  # Main and administration command.
+  MainCommand:
+    # Do you want the command to require permission to be executed by the player?
+    node: 'FastLogin.admin.main.view'
+    # A very simple countdown to prevent the execution of the command 2 times at the same time.
+    countdown: 3
+    # As you wish to call this function, by default (/FastLogin or /FL)
+    command: [FastLogin, FL]
+    # Server added here, command that does not work on this server.
+    blacklistServer: [AuthLobby-001, AuthLobby-002]
+    # Here you can modify the main command arguments.
+    arguments:
+      # /FastLogin 'premium' @@@@@ @@@@@
+      premium:
+        executor: [premium, pr]
+        node:
+          status: 'FastLogin.admin.status'
+          toggle: 'FastLogin.admin.toggle'
+      # /FastLogin 'reload'
+      # Attention!: This command cannot reload some options, it will always be recommended to restart your BungeeCord (Proxy)
+      reload:
+        executor: [reload, rl]
+        node: 'FastLogin.admin.reload'
+  # Command and derived arguments to users.
+  PremiumToggleMode:
+    # Do you want the command to require permission to be executed by the player?
+    node: 'FastLogin.premium.usage'
+    # A very simple countdown to prevent the execution of the command 2 times at the same time.
+    countdown: 10
+    # As you wish to call this function, by default (/premium or /pr)
+    command: [premium, pr]
+    # Server added here, command that does not work on this server.
+    blacklistServer: [AuthLobby-001, AuthLobby-002]
+    # If the player changes from Premium -> Cracked or Cracked -> Premium, why tell him to log in again?
+    # Save time by expelling the player quickly once the command has been executed!
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!----------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # CAUTION: If a Cracked player uses the nickname of someone registered in Mojang,
+    # he can activate this mode but at the time of leaving of the network he will not be able to enter again!
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!----------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    kickToggleMode: true
+
+# Modify main functions of the plugin
+Plugin:
+  # A countdown for the messages sent to the player once he enters, these messages can derive in the file of (lang.yml)
+  # You will find some messages that use this time, example [Normal.inGame.newNonPremiumEntry or Normal.inGame.logInCrackedOrPremium]
+  # The timeLapse is in seconds.
+  timeLapse: 5
+  # Do you want to ban the entry of players if one of your main servers is closed?
+  # Attention: if your servers are not all in the same machine, I advise you to deactivate this option.
+  checkServerConnection: true
+  # If you want to know what the plugin does, you can activate this.
+  # Attention, this can be annoying on your console after a while, it is recommended to use the log system.
+  debugMode: false
+  # The (SemiPremiumMode) is the system that allows your Network to filter players who use premium nicks,
+  # This way, if the player is not using the premium launcher, he will be ejected immediately.
+  semiPremiumMode: false
+  # If you deactivate this premium players will use the UUID provided by MOJANG,
+  # this means that the progress of those players will not be lost, but it can cause problems with other plugins that do not work with UUID Premium.
+  doNotUseMojangUUID: true
+  # Here you can decide which server to send premium and cracked players to.
+  Servers:
+    # Here the players authenticated with Mojang will be sent
+    premium: [Lobby-001, Lobby-002]
+    # Cracked Players will be sent to this list of servers.
+    cracked: [AuthLobby-001, AuthLobby-002]
