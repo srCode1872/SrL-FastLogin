@@ -10,6 +10,7 @@
 # %RELOAD-ARGUMENT% -> It obtains the first value set in the configuration file (config.yml) of the plugin in the section of (# /FastLogin 'reload'), path: [ Commands.MainCommand.command.arguments.reload.executor ]
 # %FLOGIN-COMMAND% -> Deliver the first value obtained from the configuration file (config.yml) set as the plugin command, path: [ Commands.PremiumToggleMode.command ]
 # Now, all messages except those sent to the console support JSON!
+# A new section that involves translating one of the variables for a better experience: the section in question is at the end with the path [Others]
 
 Normal:
   console:
@@ -45,16 +46,16 @@ Normal:
     newNonPremiumEntry:
       - '&eWelcome &3%USERNAME% &7·'
       - '  &9&lYour income indicates that you are &a&lPREMIUM &9&land your progress may not be saved.'
-      - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cand your progress is saved according to the server &coptions."}]'
+      - '[{"text":"&cClick"},{"text":" &ehere ","clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&eActivate or deactivate the premium mode and thus fast logging."}]}}},{"text":"&cTo enter between premium or cracked mode."}]'
     logInCrackedOrPremium:
       premium:
         - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
         - '&f%USERNAME% &7· &e&lYou have logged in as a &a&lPREMIUM &e&luser'
-        - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cTo enter between premium or cracked mode."}]'
+        - '[{"text":"&cClick"},{"text":" &ehere ","clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&eActivate or deactivate the premium mode and thus fast logging."}]}}},{"text":"&cTo enter between premium or cracked mode."}]'
       cracked:
         - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
         - '&f%USERNAME% &7· &e&lYou have logged in as a &c&lCRACKED &e&luser'
-        - '[{"text":"&cClick"},{"text":" &ehere ","hoverEvent":{"action":"SHOW_TEXT","value":"&eActivate or deactivate the premium mode and thus fast logging."},"clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"}},{"text":"&cTo enter between premium or cracked mode."}]'
+        - '[{"text":"&cClick"},{"text":" &ehere ","clickEvent":{"action":"run_command","value":"/%FLOGIN-COMMAND%"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&eActivate or deactivate the premium mode and thus fast logging."}]}}},{"text":"&cTo enter between premium or cracked mode."}]'
   outGame:
     waitingForTheHandshake:
       - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
@@ -85,15 +86,15 @@ Commands:
     usage:
       - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
       - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
-      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
-      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
-      - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lLoad the new configuration and the language file without restarting the proxy."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lAsk the plugin cache if the player has the premium login activated or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lIt establishes if the player wants to start a session as a premium or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lLoad the new configuration and the language file without restarting the proxy."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
       - '&3&m―――――――――――――――――――――――――――――――――――――&r'
     status:
       usage:
         - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
         - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
-        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lAsk the plugin cache if the player has the premium login activated or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
         - '&3&m―――――――――――――――――――――――――――――――――――――&r'
       enable:
         - ''
@@ -119,7 +120,7 @@ Commands:
       usage:
         - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
         - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
-        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+        - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lIt establishes if the player wants to start a session as a premium or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
         - '&3&m―――――――――――――――――――――――――――――――――――――&r'
       enable:
         - ''
@@ -133,7 +134,7 @@ Commands:
       usage:
         - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
         - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
-        - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lLoad the new configuration and the language file without restarting the proxy."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
+        - '[{"text":" &3· &7/&9%COMMAND% %RELOAD-ARGUMENT%","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lLoad the new configuration and the language file without restarting the proxy."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %RELOAD-ARGUMENT%"}}]'
         - '&3&m―――――――――――――――――――――――――――――――――――――&r'
       start:
         - ''
@@ -149,8 +150,8 @@ Commands:
     usage:
       - '&d&lFastLogin &fby &7SrLegsini &7recoded &fby &7srCode1872'
       - '&3&m――――――――――――――&7&l[&d&lFastLogin&7&l]&3&m―――――――――――――'
-      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lAsk the plugin cache if the player has the premium login activated or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
-      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":"&e&lIt establishes if the player wants to start a session as a premium or not."},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9status &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lAsk the plugin cache if the player has the premium login activated or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% status "}}]'
+      - '[{"text":" &3· &7/&9%COMMAND% %PREMIUM-ARGUMENT% &9toggle &7<&3USERNAME&7>","hoverEvent":{"action":"SHOW_TEXT","value":{"text":"","extra":[{"text":"&e&lIt establishes if the player wants to start a session as a premium or not."}]}},"clickEvent":{"action":"suggest_command","value":"/%COMMAND% %PREMIUM-ARGUMENT% toggle "}}]'
       - '&3&m―――――――――――――――――――――――――――――――――――――&r'
     enable:
       - ''
