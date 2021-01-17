@@ -1,10 +1,10 @@
-![Header](https://www.spigotmc.org/attachments/1-png.550863/)
-![Features](https://www.spigotmc.org/attachments/2-png.550864/)
-![How_to_set_up](https://proxy.spigotmc.org/be0be8c8379f1d82350c606fe3d47f82eacdfe4e?url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F685046171915386959%2F685046284133990400%2FHow_to_set_up.jpg)
-![Commands&Permissions](https://proxy.spigotmc.org/f29c6a978babb90f54958a0d7337012cbe7334f2?url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F685046171915386959%2F685054046322556931%2FCommandsPermissions.jpg)
-![Why_fastlogin](https://proxy.spigotmc.org/a2c21e5486b67aee08fc65535b28b8cf0ae92d0d?url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F685046171915386959%2F685061655834656776%2FWhy_SrL-FastLogin_and_not_others.jpg)
-![Server_Using_SrL-FastLogin](https://proxy.spigotmc.org/9b30df989f23dfdcb8cb4c4bac72a094007fe05b?url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F685046171915386959%2F685893755206762681%2FServer_using_SrL-FastLogin.jpg)
-![ToS](https://proxy.spigotmc.org/a13c347e1e3b78fbc15e3be74d773c116fbcc915?url=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F685046171915386959%2F685228329259106304%2FTerm_of_Service.jpg)
+![Header](https://cdn.discordapp.com/attachments/800363018667687957/800363103078187008/1.png)
+![Features](https://media.discordapp.net/attachments/800363018667687957/800363199110840394/2.png)
+![How_to_set_up](https://cdn.discordapp.com/attachments/800363018667687957/800363232266944532/3.png)
+![Commands&Permissions](https://cdn.discordapp.com/attachments/800363018667687957/800363260795945000/4.png)
+![Why_fastlogin](https://cdn.discordapp.com/attachments/800363018667687957/800363256060837908/5.png)
+![Server_Using_SrL-FastLogin](https://cdn.discordapp.com/attachments/800363018667687957/800363456963280926/6.png)
+![ToS](https://cdn.discordapp.com/attachments/800363018667687957/800363472713547806/7.png)
 
 __This plugin utilizes [bStats](https://bstats.org/plugin/bungeecord/SrL-FastLogin/6650) to collect anonymous statistics__
 
